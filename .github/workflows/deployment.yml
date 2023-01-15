@@ -17,6 +17,7 @@ jobs:
       - name: Lint
         run: yarn lint
   test:
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -32,6 +33,7 @@ jobs:
       - name: Test
         run: yarn test
   deploy:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: Get code
