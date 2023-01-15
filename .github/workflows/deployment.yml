@@ -1,0 +1,50 @@
+name: Deployement Exercise
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Lint
+        run: yarn lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Test
+        run: yarn test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Buil code
+        run: yarn build
+      - name: Deploy code
+        run: echo "Deploying ..."
